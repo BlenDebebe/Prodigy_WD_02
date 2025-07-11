@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,9 +9,34 @@ body {
   background-color: #121212;
   color: #ffffff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle-container {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+}
+
+#theme-toggle {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+#theme-toggle:hover,
+#theme-toggle:focus {
+  background-color: #555;
+  outline: none;
 }
 
 .stopwatch-card {
@@ -17,6 +46,8 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
   text-align: center;
   width: 320px;
+  max-width: 95vw;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 h1 {
@@ -32,22 +63,29 @@ h1 {
 
 .buttons {
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
 }
 
 .buttons button {
-  margin: 6px;
-  padding: 10px 20px;
+  padding: 10px 16px;
   font-size: 15px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   background-color: #333;
   color: white;
   transition: background-color 0.3s;
+  flex: 1 1 100px;
+  min-width: 100px;
 }
 
-.buttons button:hover {
+.buttons button:hover,
+.buttons button:focus {
   background-color: #555;
+  outline: none;
 }
 
 #laps {
@@ -57,11 +95,70 @@ h1 {
   max-height: 150px;
   overflow-y: auto;
   font-size: 14px;
+  text-align: left;
 }
 
 #laps li {
   background: #2c2c2c;
   margin: 4px 0;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Light theme */
+body.light-theme {
+  background-color: #f0f0f0;
+  color: #292929;
+}
+
+body.light-theme .stopwatch-card {
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+body.light-theme .buttons button {
+  background-color: #ddd;
+  color: #222;
+}
+
+body.light-theme .buttons button:hover,
+body.light-theme .buttons button:focus {
+  background-color: #bbb;
+}
+
+body.light-theme #laps li {
+  background-color: #e0e0e0;
+}
+
+body.light-theme #theme-toggle {
+  background-color: #ddd;
+  color: #222;
+}
+
+body.light-theme #theme-toggle:hover,
+body.light-theme #theme-toggle:focus {
+  background-color: #bbb;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .stopwatch-card {
+    padding: 20px 20px;
+  }
+
+  #display {
+    font-size: 32px;
+  }
+
+  .buttons button {
+    flex: 1 1 45%;
+    min-width: unset;
+  }
 }

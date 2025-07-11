@@ -7,17 +7,24 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="theme-toggle-container">
+    <button id="theme-toggle">Switch Theme</button>
+  </div>
+
   <div class="stopwatch-card">
     <h1>Stopwatch</h1>
-    <div id="display">00:00:00.00</div>
+    <div id="display">00:00:00.000</div>
+
     <div class="buttons">
-      <button onclick="startStopwatch()">Start</button>
-      <button onclick="pauseStopwatch()">Pause</button>
-      <button onclick="resetStopwatch()">Reset</button>
-      <button onclick="recordLap()">Lap</button>
+      <button id="start-pause-btn">Start</button>
+      <button id="reset-btn">Reset</button>
+      <button id="lap-btn">Lap</button>
+      <button id="export-btn">Export Laps</button>
     </div>
+
     <ul id="laps"></ul>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
